@@ -616,9 +616,9 @@ elif page == "Cancellation Prediction":
                     "booking data and do not guarantee actual outcomes."
                 )
 
-            except Exception as e:
-
-                st.error(f"Prediction Error: {e}")
+           except Exception as e:
+    st.error(f"Prediction Error: {e}")
+    st.exception(e)
 
 
 # ==========================================
