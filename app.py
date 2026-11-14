@@ -617,8 +617,8 @@ elif page == "Cancellation Prediction":
                 )
 
            except Exception as e:
-    st.error(f"Prediction Error: {e}")
-    st.exception(e)
+            st.error(f"Prediction Error: {e}")
+            st.exception(e)
 
 
 # ==========================================
