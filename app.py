@@ -18,8 +18,8 @@ st.set_page_config(
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-MODEL_PATH = os.path.join(
-    BASE_DIR, "hotel_cancellation_model.pkl"
+MODEL_ZIP_PATH = os.path.join(
+    BASE_DIR, "hotel_cancellation_model.zip"
 )
 
 DATA_PATH = os.path.join(
@@ -32,8 +32,11 @@ DATA_PATH = os.path.join(
 
 @st.cache_resource
 def load_model():
-    with open(MODEL_PATH, "rb") as f:
-        return cloudpickle.load(f)
+    import zipfile
+
+    with zipfile.ZipFile(MODEL_ZIP_PATH, "r") as archive:
+        with archive.open("hotel_cancellation_model.pkl") as f:
+            return cloudpickle.load(f)
 
 
 @st.cache_data
