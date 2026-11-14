@@ -528,6 +528,7 @@ elif page == "Cancellation Prediction":
             use_container_width=True
         )
 
+   
     # ======================================
     # 6. PREDICTION RESULTS
     # ======================================
@@ -535,13 +536,9 @@ elif page == "Cancellation Prediction":
     if submit:
 
         if adults + children + babies == 0:
-
-            st.error(
-                "Please enter at least one guest."
-            )
+            st.error("Please enter at least one guest.")
 
         else:
-
             input_data = pd.DataFrame([{
                 "hotel": hotel,
                 "lead_time": lead_time,
@@ -574,15 +571,10 @@ elif page == "Cancellation Prediction":
             }])
 
             try:
-
                 prediction = model.predict(input_data)[0]
-
-                probability = model.predict_proba(
-                    input_data
-                )[0][1]
+                probability = model.predict_proba(input_data)[0][1]
 
                 st.divider()
-
                 st.header("Prediction Results")
 
                 col1, col2 = st.columns(2)
@@ -616,10 +608,9 @@ elif page == "Cancellation Prediction":
                     "booking data and do not guarantee actual outcomes."
                 )
 
-           except Exception as e:
-            st.error(f"Prediction Error: {e}")
-            st.exception(e)
-
+            except Exception as e:
+                st.error(f"Prediction Error: {e}")
+                st.exception(e)
 
 # ==========================================
 # 7. FOOTER
